@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 const skillsRoutes = require("./api/routes/skills");
 const projectsRoutes = require("./api/routes/projects");
 const certficatesRoutes = require("./api/routes/certificates");
+const worksRoutes = require("./api/routes/works");
 const userRoutes = require("./api/routes/user");
 
 //connecting with database
@@ -35,6 +36,7 @@ app.use((req, res, next) => {
 app.use("/skills", skillsRoutes);
 app.use("/projects", projectsRoutes);
 app.use("/certificates", certficatesRoutes);
+app.use("/works", worksRoutes);
 app.use("/user", userRoutes);
 
 //error handling

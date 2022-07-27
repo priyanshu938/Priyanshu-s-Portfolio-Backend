@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
-//Creating Certificates Schema
-const certificateSchema = mongoose.Schema({
+//Creating Works Schema
+const workSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: { type: String, required: true },
   image: { type: String, required: true },
   description: { type: String, required: true },
-  link: { type: String, required: true },
+  url: { type: String, required: true },
 });
 
-module.exports = mongoose.model("Certificate", certificateSchema);
+module.exports = mongoose.model("Work", workSchema);
