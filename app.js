@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 
 //import routes like this
 const skillsRoutes = require("./api/routes/skills");
-// const ordersRoutes = require("./api/routes/orders");
+const projectsRoutes = require("./api/routes/projects");
 const userRoutes = require("./api/routes/user");
 
 //connecting with database
@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 
 //use routes like this to handle requests
 app.use("/skills", skillsRoutes);
-// app.use("/orders", ordersRoutes);
+app.use("/projects", projectsRoutes);
 app.use("/user", userRoutes);
 
 //error handling
