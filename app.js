@@ -10,7 +10,8 @@ const skillsRoutes = require("./api/routes/skills");
 const projectsRoutes = require("./api/routes/projects");
 const certficatesRoutes = require("./api/routes/certificates");
 const worksRoutes = require("./api/routes/works");
-const resumeRoutes=require("./api/routes/resume");
+const resumeRoutes = require("./api/routes/resume");
+const changePasswordRoutes = require("./api/routes/changePassword");
 const userRoutes = require("./api/routes/user");
 
 //connecting with database
@@ -39,6 +40,7 @@ app.use("/projects", projectsRoutes);
 app.use("/certificates", certficatesRoutes);
 app.use("/works", worksRoutes);
 app.use("/resume", resumeRoutes);
+app.use("/forgotPassword", changePasswordRoutes);
 app.use("/user", userRoutes);
 
 //error handling
