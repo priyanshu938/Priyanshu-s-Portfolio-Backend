@@ -60,7 +60,7 @@ exports.user_login = (req, res, next) => {
             }
           );
           return res.status(200).json({
-            message: "Auth successful",
+            message: "Logged In successfully",
             token: token,
           });
         }
