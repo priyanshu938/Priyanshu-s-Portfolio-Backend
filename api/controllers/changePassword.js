@@ -53,7 +53,7 @@ exports.sendOtp = async (req, res, next) => {
             _id: new mongoose.Types.ObjectId(),
             otp: hash,
             createdAt: new Date(),
-            expiredAt: new Date(Date.now() + 15 * 60 * 1000),
+            expiredAt: new Date(Date.now() + 1 * 60 * 1000),
           });
           otp
             .save()
