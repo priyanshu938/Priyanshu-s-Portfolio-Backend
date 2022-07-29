@@ -32,6 +32,7 @@ const sendOtp = (email, otp) => {
 };
 
 exports.sendOtp = async (req, res, next) => {
+  await Otp.deleteMany({});
   User.findOne({ email: req.body.email })
     .exec()
     .then((user) => {
