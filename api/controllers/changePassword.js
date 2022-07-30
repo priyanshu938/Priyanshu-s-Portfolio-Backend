@@ -84,22 +84,22 @@ exports.verifyOtp = async (req, res, next) => {
     .then(async (otp) => {
       if (!otp) {
         return res.status(401).json({
-          message: "Otp does not exist",
+          message: "Otp does not exist !",
         });
       } else if (otp[0].expiredAt < new Date()) {
         await Otp.deleteOne({ _id: req.body.otpId });
-        return res.status(401).json({
-          message: "Otp expired",
+        return res.status(201).json({
+          message: "Otp expired !",
         });
       } else {
         const validOTP = await bcrypt.compare(req.body.otp, otp[0].otp);
         if (validOTP) {
           await Otp.deleteOne({ _id: req.body.otpId });
           return res.status(200).json({
-            message: "Otp verified successfully",
+            message: "Otp verified successfully 1",
           });
         } else
-          return res.status(401).json({
+          return res.status(201).json({
             message: "You have entered wrong otp!",
           });
       }
