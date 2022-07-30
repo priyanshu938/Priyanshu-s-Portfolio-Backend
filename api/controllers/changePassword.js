@@ -37,7 +37,7 @@ exports.sendOtp = async (req, res, next) => {
     .exec()
     .then((user) => {
       if (!user)
-        return res.status(401).json({
+        return res.status(200).json({
           message: "User does not exist1",
         });
       const otp = `${Math.floor(1000 + Math.random() * 9000)}`;
