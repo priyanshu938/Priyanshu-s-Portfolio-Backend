@@ -96,7 +96,7 @@ exports.verifyOtp = async (req, res, next) => {
         if (validOTP) {
           await Otp.deleteOne({ _id: req.body.otpId });
           return res.status(200).json({
-            message: "Otp verified successfully 1",
+            message: "Otp verified successfully !",
           });
         } else
           return res.status(201).json({
