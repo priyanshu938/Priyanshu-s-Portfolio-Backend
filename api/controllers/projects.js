@@ -34,7 +34,7 @@ exports.add_project = (req, res, next) => {
     .then((result) => {
       console.log(result);
       res.status(201).json({
-        message: "Project added successfully",
+        message: "Project added successfully!",
         createdProject: {
           _id: result._id,
           title: result.title,
@@ -64,7 +64,7 @@ exports.edit_project = (req, res, next) => {
     .exec()
     .then((result) => {
       res.status(200).json({
-        message: "Project updated successfully",
+        message: "Project updated successfully!",
       });
     })
     .catch((err) => {
@@ -77,7 +77,7 @@ exports.delete_project = (req, res, next) => {
     .exec()
     .then((result) => {
       res.status(200).json({
-        message: "Project Deleted",
+        message: "Project Deleted!",
       });
     })
     .catch((err) => {

@@ -30,7 +30,7 @@ exports.add_certificate = (req, res, next) => {
     .then((result) => {
       console.log(result);
       res.status(201).json({
-        message: "Certificate added successfully",
+        message: "Certificate added successfully!",
         createdCertificate: {
           _id: result._id,
           name: result.name,
@@ -58,7 +58,7 @@ exports.edit_certificate = (req, res, next) => {
     .exec()
     .then((result) => {
       res.status(200).json({
-        message: "Certificate updated successfully",
+        message: "Certificate updated successfully!",
       });
     })
     .catch((err) => {
@@ -71,7 +71,7 @@ exports.delete_certificate = (req, res, next) => {
     .exec()
     .then((result) => {
       res.status(200).json({
-        message: "Certificate Deleted",
+        message: "Certificate Deleted!",
       });
     })
     .catch((err) => {

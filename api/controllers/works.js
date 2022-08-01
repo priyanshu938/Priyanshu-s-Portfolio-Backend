@@ -30,7 +30,7 @@ exports.add_work = (req, res, next) => {
     .then((result) => {
       console.log(result);
       res.status(201).json({
-        message: "Work added successfully",
+        message: "Work added successfully1",
         createdWork: {
           _id: result._id,
           name: result.name,
@@ -58,7 +58,7 @@ exports.edit_work = (req, res, next) => {
     .exec()
     .then((result) => {
       res.status(200).json({
-        message: "Work updated successfully",
+        message: "Work updated successfully!",
       });
     })
     .catch((err) => {
@@ -71,7 +71,7 @@ exports.delete_work = (req, res, next) => {
     .exec()
     .then((result) => {
       res.status(200).json({
-        message: "Work Deleted",
+        message: "Work Deleted!",
       });
     })
     .catch((err) => {

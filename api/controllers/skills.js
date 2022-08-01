@@ -28,7 +28,7 @@ exports.add_skill = (req, res, next) => {
     .then((result) => {
       console.log(result);
       res.status(201).json({
-        message: "Skill added successfully",
+        message: "Skill added successfully!",
         createdSkill: {
           _id: result._id,
           skill: result.skill,
@@ -50,7 +50,7 @@ exports.edit_skill = (req, res, next) => {
     .exec()
     .then((result) => {
       res.status(200).json({
-        message: "Skill updated successfully",
+        message: "Skill updated successfully!",
       });
     })
     .catch((err) => {
@@ -63,7 +63,7 @@ exports.delete_skill = (req, res, next) => {
     .exec()
     .then((result) => {
       res.status(200).json({
-        message: "Skill Deleted",
+        message: "Skill Deleted!",
       });
     })
     .catch((err) => {
