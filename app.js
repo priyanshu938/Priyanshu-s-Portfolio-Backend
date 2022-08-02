@@ -14,6 +14,7 @@ const worksRoutes = require("./api/routes/works");
 const resumeRoutes = require("./api/routes/resume");
 const changePasswordRoutes = require("./api/routes/changePassword");
 const userRoutes = require("./api/routes/user");
+const contactRoutes=require("./api/routes/contact");
 
 //connecting with database
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
@@ -33,6 +34,7 @@ app.use("/works", worksRoutes);
 app.use("/resume", resumeRoutes);
 app.use("/forgotPassword", changePasswordRoutes);
 app.use("/user", userRoutes);
+app.use("/contact", contactRoutes);
 
 //error handling
 app.use((req, res, next) => {
