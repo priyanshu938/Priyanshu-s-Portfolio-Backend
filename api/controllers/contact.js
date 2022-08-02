@@ -82,3 +82,17 @@ exports.send_message = async (req, res, next) => {
       res.status(500).json({ error: err });
     });
 };
+
+exports.delete_message = async (req, res, next) => {
+  Contact.remove({ _id: req.params.messageId })
+    .exec()
+    .then((result) => {
+      res.status(200).json({
+        message: "Message Deleted!",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+};
