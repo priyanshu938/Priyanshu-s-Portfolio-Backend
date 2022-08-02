@@ -31,13 +31,13 @@ const sendEmail = (name, email, message) => {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: "Feedback",
-      text: "Thank you for your response!",
+      html: "<h1>Thank you for your response!</h1>",
     };
     var mailOptionsForAdmin = {
       from: process.env.NODEMAILER_EMAIL,
       to: process.env.NODEMAILER_EMAIL,
-      subject: "Message recieved",
-      text: `${name} has sent a message.\n\n${message}`,
+      subject: "Message received",
+      html: `<h2>Name : ${name} </h2><br/><h3>Message : ${message}</h3>`,
     };
     transporter.sendMail(mailOptionsForCustomer, function (error, info) {
       if (error) {
@@ -55,12 +55,26 @@ const sendEmail = (name, email, message) => {
 };
 
 exports.send_message = async (req, res, next) => {
+  let date_ob = new Date();
+  let date = ("0" + date_ob.getDate()).slice(-2);
+  let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+  let year = date_ob.getFullYear();
+  var t = new Date();
+  var time = t.toLocaleString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+  date = date + "/" + month + "/" + year;
   const contact = new Contact({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
     email: req.body.email,
     message: req.body.message,
+    date: date,
+    time: time,
   });
+
   contact
     .save()
     .then((result) => {
@@ -72,6 +86,8 @@ exports.send_message = async (req, res, next) => {
           name: result.name,
           email: result.email,
           message: result.message,
+          date: result.date,
+          time: result.time,
         },
       });
 

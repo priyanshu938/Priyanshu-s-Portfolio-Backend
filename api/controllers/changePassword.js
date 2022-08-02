@@ -19,7 +19,7 @@ const sendOtp = (email, otp) => {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: "Otp Verification",
-      text: `Your One Time Password for My Portfolio Dashboard is ${otp}. Your otp is valid for 1 minute only.`,
+      html: `<p style="font-size:20px">Your One Time Password for My Portfolio Dashboard is <b>${otp}</b>.<br/></br/><br/>Your otp is valid for 1 minute only.</p>`,
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
