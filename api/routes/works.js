@@ -5,6 +5,11 @@ const check_auth = require("../middleware/check_auth");
 const WorksController = require("../controllers/works");
 
 router.get("/getAllWorks", WorksController.get_all_works);
+router.get(
+  "/getAllWorksDashboard",
+  check_auth,
+  WorksController.get_all_works_dashboard
+);
 
 router.post("/addWork", check_auth, WorksController.add_work);
 

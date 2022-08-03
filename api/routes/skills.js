@@ -5,11 +5,20 @@ const check_auth = require("../middleware/check_auth");
 const SkillsController = require("../controllers/skills");
 
 router.get("/getAllSkills", SkillsController.get_all_skills);
+router.get(
+  "/getAllSkillsDashboard",
+  check_auth,
+  SkillsController.get_all_skills_dashboard
+);
 
 router.post("/addSkill", check_auth, SkillsController.add_skill);
 
 router.patch("/editSkill/:skillId", check_auth, SkillsController.edit_skill);
 
-router.delete("/deleteSkill/:skillId", check_auth, SkillsController.delete_skill);
+router.delete(
+  "/deleteSkill/:skillId",
+  check_auth,
+  SkillsController.delete_skill
+);
 
 module.exports = router;

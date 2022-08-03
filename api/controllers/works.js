@@ -17,6 +17,22 @@ exports.get_all_works = (req, res, next) => {
     });
 };
 
+exports.get_all_works_dashboard = (req, res, next) => {
+  Work.find()
+    .sort({ _id: -1 })
+    .select("_id name image description url")
+    .exec()
+    .then((result) => {
+      res.status(200).json({
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
+    });
+};
 exports.add_work = (req, res, next) => {
   const work = new Work({
     _id: new mongoose.Types.ObjectId(),

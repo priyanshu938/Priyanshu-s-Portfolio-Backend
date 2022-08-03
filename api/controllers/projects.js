@@ -19,6 +19,24 @@ exports.get_all_projects = (req, res, next) => {
     });
 };
 
+exports.get_all_projects_dashboard = (req, res, next) => {
+  Project.find()
+    .sort({ _id: -1 })
+    .select(
+      "_id image title description githubLink liveProjectLink youtubeVideoLink"
+    )
+    .exec()
+    .then((result) => {
+      res.status(200).json({
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
+    });
+};
 exports.add_project = (req, res, next) => {
   const project = new Project({
     _id: new mongoose.Types.ObjectId(),

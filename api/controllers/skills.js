@@ -16,7 +16,22 @@ exports.get_all_skills = (req, res, next) => {
       });
     });
 };
-
+exports.get_all_skills_dashboard = (req, res, next) => {
+  Skill.find()
+    .sort({ _id: -1 })
+    .select("_id skill image")
+    .exec()
+    .then((result) => {
+      res.status(200).json({
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
+    });
+};
 exports.add_skill = (req, res, next) => {
   const skill = new Skill({
     _id: new mongoose.Types.ObjectId(),
