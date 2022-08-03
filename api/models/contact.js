@@ -8,6 +8,7 @@ const contactSchema = mongoose.Schema({
   message: { type: String, required: true },
   date: { type: String, required: true },
   time: { type: String, required: true },
+  sentAt: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Contact", contactSchema);

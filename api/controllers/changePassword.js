@@ -19,7 +19,7 @@ const sendOtp = (email, otp) => {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: "Otp Verification",
-      html: `<p style="font-size:20px">Your One Time Password for My Portfolio Dashboard is <b>${otp}</b>.<br/></br/><br/>Your otp is valid for 1 minute only.</p>`,
+      html: `<p style="font-size:20px">Your One Time Password for My Portfolio Dashboard is <span style="color:green">${otp}</span>.<br/></br/><br/>Your otp is valid for 1 minute only.</p>`,
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
@@ -41,7 +41,6 @@ exports.sendOtp = async (req, res, next) => {
           message: "User does not exist1",
         });
       const otp = `${Math.floor(1000 + Math.random() * 9000)}`;
-      console.log(otp);
       sendOtp(req.body.email, otp);
       bcrypt.hash(otp, 10, (err, hash) => {
         if (err) {

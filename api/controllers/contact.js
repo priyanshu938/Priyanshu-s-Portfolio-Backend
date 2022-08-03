@@ -5,7 +5,8 @@ const Contact = require("../models/contact");
 
 exports.get_all_contacts = (req, res, next) => {
   Contact.find()
-    .select("_id name email message ")
+    .sort({ _id: -1 })
+    .select("_id name email message date time sentAt")
     .exec()
     .then((result) => {
       res.status(200).json({
@@ -73,12 +74,12 @@ exports.send_message = async (req, res, next) => {
     message: req.body.message,
     date: date,
     time: time,
+    sentAt: new Date().toISOString(),
   });
 
   contact
     .save()
     .then((result) => {
-      console.log(result);
       res.status(201).json({
         message: "Message sent!",
         createdContact: {
@@ -88,6 +89,7 @@ exports.send_message = async (req, res, next) => {
           message: result.message,
           date: result.date,
           time: result.time,
+          sentAt: result.sentAt,
         },
       });
 
