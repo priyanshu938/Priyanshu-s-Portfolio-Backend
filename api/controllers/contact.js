@@ -61,7 +61,7 @@ exports.send_message = async (req, res, next) => {
   let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
   let year = date_ob.getFullYear();
   var t = new Date();
-  var time = t.toLocaleString("en-US", {
+  var time = t.toLocaleString("hi-IN", {
     hour: "numeric",
     minute: "numeric",
     hour12: true,
