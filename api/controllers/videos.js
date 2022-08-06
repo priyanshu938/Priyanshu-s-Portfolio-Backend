@@ -8,6 +8,7 @@ exports.get_all_videos = (req, res, next) => {
     .then((result) => {
       res.status(200).json({
         result: result,
+        channelLink: "https://www.youtube.com/channel/UCMiZJ5hWjUMvCKtjeI7MFFw",
       });
     })
     .catch((err) => {

@@ -32,13 +32,13 @@ const sendEmail = (name, email, message) => {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: "Feedback",
-      html: "<h1>Thank you for your response!</h1>",
+      html: `<h1>Hi, ${name}! <br/> Thank you for your response!</h1><br/><h2 style="color:green">We also provide WEB AND APPLICATION DEVELOPMENT services to our clients at very affordable prices.<br/>Feel free to reach out us anytime when needed.</h2><br/><h2>Thank You!<br/>Have a good day!<br/>☺</h2>`,
     };
     var mailOptionsForAdmin = {
       from: process.env.NODEMAILER_EMAIL,
       to: process.env.NODEMAILER_EMAIL,
       subject: "Message received",
-      html: `<h2>Name : ${name} </h2><br/><h3>Message : ${message}</h3>`,
+      html: `<h1>Name : ${name} </h1><h1>Message : ${message}</h1>`,
     };
     transporter.sendMail(mailOptionsForCustomer, function (error, info) {
       if (error) {
