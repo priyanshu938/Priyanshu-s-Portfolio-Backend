@@ -16,6 +16,7 @@ const changePasswordRoutes = require("./api/routes/changePassword");
 const userRoutes = require("./api/routes/user");
 const videosRoutes = require("./api/routes/videos");
 const contactRoutes=require("./api/routes/contact");
+const emailViaFormRoutes = require("./api/routes/emailViaForm");
 
 //connecting with database
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
@@ -24,6 +25,7 @@ mongoose.Promise = global.Promise;
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use("/email_attachments", express.static("email_attachments")); //to publicly access static folder uploads
 //To prevent CORS (Cross-origin resource sharing) error
 app.use(cors());
 
@@ -37,6 +39,7 @@ app.use("/forgotPassword", changePasswordRoutes);
 app.use("/user", userRoutes);
 app.use("/videos", videosRoutes);
 app.use("/contact", contactRoutes);
+app.use("/emailViaForm", emailViaFormRoutes);
 
 //error handling
 app.use((req, res, next) => {
