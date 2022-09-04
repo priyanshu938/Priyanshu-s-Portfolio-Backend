@@ -15,7 +15,8 @@ const resumeRoutes = require("./api/routes/resume");
 const changePasswordRoutes = require("./api/routes/changePassword");
 const userRoutes = require("./api/routes/user");
 const videosRoutes = require("./api/routes/videos");
-const contactRoutes=require("./api/routes/contact");
+const testimonialRoutes = require("./api/routes/testimonial");
+const contactRoutes = require("./api/routes/contact");
 const emailViaFormRoutes = require("./api/routes/emailViaForm");
 
 //connecting with database
@@ -38,6 +39,7 @@ app.use("/resume", resumeRoutes);
 app.use("/forgotPassword", changePasswordRoutes);
 app.use("/user", userRoutes);
 app.use("/videos", videosRoutes);
+app.use("/testimonial", testimonialRoutes);
 app.use("/contact", contactRoutes);
 app.use("/emailViaForm", emailViaFormRoutes);
 
