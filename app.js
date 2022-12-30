@@ -18,6 +18,7 @@ const videosRoutes = require("./api/routes/videos");
 const testimonialRoutes = require("./api/routes/testimonial");
 const contactRoutes = require("./api/routes/contact");
 const emailViaFormRoutes = require("./api/routes/emailViaForm");
+const chatbotRoutes = require("./api/routes/chatbot");
 
 //connecting with database
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
@@ -42,7 +43,7 @@ app.use("/videos", videosRoutes);
 app.use("/testimonial", testimonialRoutes);
 app.use("/contact", contactRoutes);
 app.use("/emailViaForm", emailViaFormRoutes);
-
+app.use("/chatbot", chatbotRoutes);
 //error handling
 app.use((req, res, next) => {
   const error = new Error("Not Found !");
