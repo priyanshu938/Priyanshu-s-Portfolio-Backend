@@ -7,13 +7,19 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 exports.getResponseFromChatbot = async (req, res, next) => {
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: req.body.prompt,
-    max_tokens: 4000,
-    temperature: 0,
-  });
-  res.status(200).json({
-    message: response.data.choices[0].text,
-  });
+  try {
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: req.body.prompt,
+      max_tokens: 4000,
+      temperature: 0,
+    });
+    res.status(200).json({
+      message: response.data.choices[0].text.slice(2),
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
