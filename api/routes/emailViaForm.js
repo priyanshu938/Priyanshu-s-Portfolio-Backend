@@ -24,7 +24,6 @@ const storage = multer.diskStorage({
 //upload configuration
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 52428800 }, //this limit is equal to 50mb in binary
 });
 
 router.post("/sendEmail", check_auth, EmailViaFormController.sendEmail);
