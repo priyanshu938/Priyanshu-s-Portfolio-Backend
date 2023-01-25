@@ -1,4 +1,5 @@
 require("dotenv").config();
+const mongoose = require("mongoose");
 const EmailContacts = require("../models/savedEmailContacts");
 var nodemailer = require("nodemailer");
 const { readdirSync, rmSync } = require("fs");
@@ -37,7 +38,7 @@ exports.sendEmail = async (req, res, next) => {
 
 exports.getSavedEmailContacts = async (req, res, next) => {
   EmailContacts.find({ userId: req.body.userId })
-    .select("email -_id")
+    .select("_id email")
     .exec()
     .then((result) => {
       res.status(200).json(result);
@@ -59,12 +60,14 @@ exports.addEmailContact = async (req, res, next) => {
     });
   } else {
     const emailContact = await new EmailContacts({
+      _id: new mongoose.Types.ObjectId(),
       email: req.body.email,
     });
     await emailContact
       .save()
-      .then(() => {
+      .then((result) => {
         res.status(201).json({
+          _id: result._id,
           message: "Email added successfully",
         });
       })
@@ -75,6 +78,21 @@ exports.addEmailContact = async (req, res, next) => {
       });
   }
 };
+
+exports.deleteEmailContact = async (req, res, next) => {
+  await EmailContacts.remove({ _id: req.params.email })
+    .exec()
+    .then(() => {
+      res.status(200).json({
+        message: "Email contact deleted successfully!",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+};
+
 exports.addEmailAttachments = async (req, res, next) => {
   var attachments = [];
   for (var i = 0; i < req.files.length; i++) {

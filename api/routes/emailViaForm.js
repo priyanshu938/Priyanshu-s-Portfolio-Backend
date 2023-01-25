@@ -37,6 +37,11 @@ router.post(
   check_auth,
   EmailViaFormController.addEmailContact
 );
+router.delete(
+  "/deleteEmailContact/:email",
+  check_auth,
+  EmailViaFormController.deleteEmailContact
+);
 router.post(
   "/addEmailAttachments",
   check_auth,
