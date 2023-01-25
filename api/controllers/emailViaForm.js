@@ -28,7 +28,7 @@ exports.sendEmail = async (req, res, next) => {
         });
       }
     });
-  } catch (error) {
+  } catch (err) {
     res.status(500).json({
       error: err,
     });
