@@ -29,7 +29,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/email_attachments", express.static("email_attachments")); //to publicly access static folder uploads
 //To prevent CORS (Cross-origin resource sharing) error
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://priyanshu-tiwari-portfolio.netlify.app",
+      "https://priyanshu-portfolio-dashboard.netlify.app",
+      "http://localhost:3000",
+    ],
+  })
+);
 
 //use routes like this to handle requests
 app.use("/skills", skillsRoutes);
