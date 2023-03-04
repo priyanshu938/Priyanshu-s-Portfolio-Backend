@@ -40,7 +40,7 @@ app.use(
 );
 
 //to fix zero downtime of render
-app.use("/healthcheck", (req, res) => {
+app.get("/healthcheck", (req, res) => {
   res.status(200).send("OK");
 });
 
